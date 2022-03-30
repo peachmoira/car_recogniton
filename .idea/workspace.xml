@@ -1,28 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dd931063-f270-42dc-9e7a-d18d2dd44c9a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/image_processing.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/anpr_ocr_kz_2021_09_01_pytorch_lightning.ckpt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/craft_mlt_25k_2020-02-16.pth" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/craft_refiner_CTW1500_2020-02-16.pth" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/yolov5s-2021-12-14.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ocrDetect.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ocrr/data_loaders.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ocrr/kz.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ocrr/numberplate_ocr_data_module.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ocrr/ocr.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ocrr/ocr_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ocrr/ocr_tools.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yolo/.ipynb_checkpoints/yolov5-train-checkpoint.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yolo/yolo_tools.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yolo/yolov5-train.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yolo/yolovDetect.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/sample.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yolov5detector.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yolov5s-2021-12-14.pt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yolovDetect.py" beforeDir="false" />
-    </list>
+    <list default="true" id="dd931063-f270-42dc-9e7a-d18d2dd44c9a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -123,7 +102,7 @@
       <workItem from="1648630927948" duration="864000" />
       <workItem from="1648632470828" duration="88000" />
       <workItem from="1648632569586" duration="519000" />
-      <workItem from="1648633094723" duration="11723000" />
+      <workItem from="1648633094723" duration="12163000" />
     </task>
     <servers />
   </component>

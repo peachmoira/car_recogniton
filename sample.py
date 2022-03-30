@@ -1,4 +1,9 @@
-# Specify device
+#models
+yolo_path = 'models/yolov5s-2021-12-14.pt'
+trained_model = 'models/craft_mlt_25k_2020-02-16.pth'
+refiner_model = 'models/craft_refiner_CTW1500_2020-02-16.pth'
+ocr_path = 'anpr_ocr_kz_2021_09_01_pytorch_lightning.ckpt'
+
 import os
 
 # Specify device
@@ -8,49 +13,42 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 import sys
 import cv2
 
-# NomeroffNet path
-NOMEROFF_NET_DIR = os.path.abspath('../')
-
-sys.path.append(NOMEROFF_NET_DIR)
 
 # Import license plate recognition tools.
-from NomeroffNet.YoloV5Detector import Detector
+from yolovDetect import Detector
+
 detector = Detector()
-detector.load()
+detector.load_model(yolo_path)
 
-from NomeroffNet.BBoxNpPoints import NpPointsCraft, getCvZoneRGB, convertCvZonesRGBtoBGR, reshapePoints
-npPointsCraft = NpPointsCraft()
-npPointsCraft.load()
+from ocrr.kz import kz
+# from NomeroffNet import textPostprocessing
 
-from NomeroffNet.OptionsDetector import OptionsDetector
-
-from NomeroffNet.TextDetectors.eu import eu
-from NomeroffNet import textPostprocessing
-
-# load models
-optionsDetector = OptionsDetector()
-optionsDetector.load("latest")
-
-textDetector = eu()
-textDetector.load("latest")
+textDetector = kz()
+textDetector.load_model(ocr_path)
 
 # Detect numberplate
-img_path = 'examples/images/example2.jpeg'
+img_path = 'mashina.jpg'
 img = cv2.imread(img_path)
 img = img[..., ::-1]
 
 targetBoxes = detector.detect_bbox(img)
-all_points = npPointsCraft.detect(img, targetBoxes,[5,2,0])
+print(targetBoxes)
 
-# cut zones
-zones = convertCvZonesRGBtoBGR([getCvZoneRGB(img, reshapePoints(rect, 1)) for rect in all_points])
+zones = []
+regionNames = []
+for targetBox in targetBoxes:
+    x = int(min(targetBox[0], targetBox[2]))
+    w = int(abs(targetBox[2] - targetBox[0]))
+    y = int(min(targetBox[1], targetBox[3]))
+    h = int(abs(targetBox[3] - targetBox[1]))
 
-# predict zones attributes
-regionIds, countLines = optionsDetector.predict(zones)
-regionNames = optionsDetector.getRegionLabels(regionIds)
+    image_part = img[y:y + h, x:x + w]
+    zones.append(image_part)
+    regionNames.append('kz')
 
 # find text with postprocessing by standart
 textArr = textDetector.predict(zones)
-textArr = textPostprocessing(textArr, regionNames)
 print(textArr)
-# ['JJF509', 'RP70012']
+# textArr = textPostprocessing(textArr, regionNames)
+# print(textArr)
+# ['RP70012', 'JJF509']

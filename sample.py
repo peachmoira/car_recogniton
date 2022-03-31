@@ -15,7 +15,7 @@ import cv2
 
 
 # Import license plate recognition tools.
-from yolovDetect import Detector
+from yolo.yolovDetect import Detector
 
 detector = Detector()
 detector.load_model(yolo_path)
